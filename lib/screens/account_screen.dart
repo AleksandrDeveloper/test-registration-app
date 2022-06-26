@@ -94,7 +94,7 @@ class AccountScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Добро пожаловать ${state.user.name}, тут будет храниться ваши данные',
+                              'Добро пожаловать ${state.user.name}, тут будут храниться ваши данные',
                               style: Theme.of(context)
                                   .textTheme
                                   .headline3!
