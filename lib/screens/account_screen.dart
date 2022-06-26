@@ -138,11 +138,7 @@ class AccountScreen extends StatelessWidget {
             ),
           );
         }
-        return Container(
-          width: 200,
-          height: 200,
-          color: Colors.red,
-        );
+        return Container();
       },
     );
   }
