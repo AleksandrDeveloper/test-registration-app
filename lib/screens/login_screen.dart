@@ -141,7 +141,6 @@ class LoginScreenWidget extends StatelessWidget {
                                 password: passwordController.text,
                                 value: valueController.text,
                               ));
-                              BlocProvider.of<UserBloc>(context).add(GetUser());
                             },
                             textColor: const Color(0xffffffff),
                             title: 'Войти'),

@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_login_application/blocs/User/user_bloc.dart';
 
-import '../blocs/user/user_bloc.dart';
 import '../config/app_images.dart';
 import '../widgets/button_widget.dart';
 
@@ -12,7 +12,7 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // BlocProvider.of<UserBloc>(context).add(GetUser());
+    BlocProvider.of<UserBloc>(context).add(GetUser());
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         if (state is UserLoading) {
@@ -124,7 +124,8 @@ class AccountScreen extends StatelessWidget {
                               bacgroundColor: const Color(0xffc53929),
                               textColor: const Color(0xffffffff),
                               onTab: () {
-                                // BlocProvider.of<UserBloc>(context).add(ClearUser(context:  context));
+                                BlocProvider.of<UserBloc>(context)
+                                    .add(ClearUser(context: context));
                               },
                             ),
                           ],

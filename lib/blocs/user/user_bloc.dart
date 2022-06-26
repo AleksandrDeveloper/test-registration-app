@@ -10,6 +10,16 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserLoading()) {
+    on<ClearUser>((event, emit) async {
+      emit(UserLoading());
+      try {
+        final userBox = await Hive.openBox('userBox');
+        await userBox.clear();
+        await userBox.close();
+        Navigator.of(event.context).pushNamed('welcome');
+      } catch (e) {}
+    });
+
     on<GetUser>((event, emit) async {
       emit(UserLoading());
 
@@ -32,12 +42,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       } catch (e) {
         emit(const UserError(errorMassege: 'Что то пошло не так'));
       }
-      // on<ClearUser>((event, emit) async {
-      //   final userBox = await Hive.openBox('userBox');
-      //   userBox.clear();
-      //   userBox.close();
-      //   // Navigator.of(event.context).pushNamed('welcome');
-      // });
     });
   }
 }
