@@ -141,7 +141,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
           await userBox.put('password', password);
           await userBox.put('email', email);
           await userBox.put('phoneNumber', phoneNumber);
-          userBox.close;
+          await userBox.close();
           emit(RegistrationTrue());
         }
         Navigator.of(event.context).pushNamed('account');
