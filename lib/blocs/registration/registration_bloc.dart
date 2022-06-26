@@ -143,8 +143,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
           await userBox.put('phoneNumber', phoneNumber);
           userBox.close;
           emit(RegistrationTrue());
-          Navigator.of(event.context).pushNamed('account');
         }
+        Navigator.of(event.context).pushNamed('account');
       },
     );
   }

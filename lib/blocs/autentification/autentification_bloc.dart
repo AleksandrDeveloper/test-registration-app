@@ -139,16 +139,16 @@ class AutentificationBloc
             RegExp(r"^[8||+7]+[0-9]{10}$").hasMatch(phoneNumber)) {
           var userBox = await Hive.openBox<String>('userBox');
           final phoneNumberHive = userBox.get('phoneNumber');
-          // if (phoneNumber != phoneNumberHive) {
-          //   errorValue = 'Такой телефон не зарегистрирован';
-          //   emit(AutentificationError(
-          //     errorEmail: '',
-          //     errorPassword: '',
-          //     errorValue: errorValue,
-          //     errorPhoneNumber: '',
-          //   ));
-          //   return;
-          // }
+          if (phoneNumber != phoneNumberHive) {
+            errorValue = 'Такой телефон не зарегистрирован';
+            emit(AutentificationError(
+              errorEmail: '',
+              errorPassword: '',
+              errorValue: errorValue,
+              errorPhoneNumber: '',
+            ));
+            return;
+          }
           if (phoneNumber == phoneNumberHive) {
             //password
             if (password.isEmpty) {
